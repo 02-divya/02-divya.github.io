@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Divya K — Software Development Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #EFEEE6;
+    --paper-raise: #E5E3D8;
+    --ink: #1B1C18;
+    --ink-soft: #52544A;
+    --pine: #33513E;
+    --pine-deep: #223629;
+    --ochre: #9C6B30;
+    --rule: #CFCCBC;
+    --font-display: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
+    --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #171D19;
+      --paper-raise: #1F2621;
+      --ink: #EDEEE6;
+      --ink-soft: #A9AC9E;
+      --pine: #7FBE9C;
+      --pine-deep: #A9DABE;
+      --ochre: #D6A15E;
+      --rule: #33392F;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #171D19;
+    --paper-raise: #1F2621;
+    --ink: #EDEEE6;
+    --ink-soft: #A9AC9E;
+    --pine: #7FBE9C;
+    --pine-deep: #A9DABE;
+    --ochre: #D6A15E;
+    --rule: #33392F;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--pine); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--pine); outline-offset: 3px; }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---- Hero ---- */
+  header.hero {
+    padding: 88px 0 56px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero .role {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--pine);
+    letter-spacing: 0.02em;
+    margin: 0 0 18px;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.4rem, 7vw, 4rem);
+    line-height: 1.03;
+    margin: 0 0 22px;
+    max-width: 11ch;
+  }
+  .hero p.lede {
+    max-width: 52ch;
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    margin: 0 0 30px;
+  }
+  .hero .links { display: flex; flex-wrap: wrap; gap: 10px 22px; font-family: var(--font-mono); font-size: 0.86rem; }
+  .hero .links a { text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 2px; }
+  .hero .links a:hover { border-color: var(--pine); }
+
+  /* ---- Section scaffolding ---- */
+  section { padding: 52px 0; border-bottom: 1px solid var(--rule); }
+  section:last-of-type { border-bottom: none; }
+  h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 30px;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  h2 .idx { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-soft); font-weight: 400; }
+
+  /* ---- About ---- */
+  #about p { max-width: 58ch; color: var(--ink-soft); font-size: 1.02rem; }
+  #about p strong { color: var(--ink); font-weight: 600; }
+
+  /* ---- Experience timeline ---- */
+  .entry { display: grid; grid-template-columns: 128px 1fr; gap: 6px 24px; padding: 22px 0; border-top: 1px solid var(--rule); }
+  .entry:first-child { border-top: none; padding-top: 0; }
+  .entry .when { font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-soft); padding-top: 4px; }
+  .entry .org { font-family: var(--font-display); font-weight: 600; font-size: 1.08rem; margin: 0 0 2px; }
+  .entry .title { color: var(--pine-deep, var(--pine)); font-weight: 500; font-size: 0.95rem; margin: 0 0 10px; }
+  .entry ul { margin: 0; padding-left: 18px; color: var(--ink-soft); }
+  .entry li { margin-bottom: 5px; }
+  @media (max-width: 560px) {
+    .entry { grid-template-columns: 1fr; }
+  }
+
+  /* ---- Projects ---- */
+  .project { padding: 26px 0; border-top: 1px solid var(--rule); }
+  .project:first-child { border-top: none; padding-top: 0; }
+  .project-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
+  .project h3 { font-family: var(--font-display); font-size: 1.18rem; font-weight: 600; margin: 0; }
+  .project .badge { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ochre); border: 1px solid var(--ochre); padding: 2px 8px; border-radius: 3px; white-space: nowrap; }
+  .project .stack { font-family: var(--font-mono); font-size: 0.78rem; color: var(--pine); margin: 0 0 10px; }
+  .project ul { margin: 0; padding-left: 18px; color: var(--ink-soft); }
+  .project li { margin-bottom: 5px; }
+
+  /* ---- Skills ---- */
+  .skill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 30px; }
+  .skill-group h4 { font-family: var(--font-mono); font-size: 0.76rem; color: var(--ink-soft); font-weight: 500; margin: 0 0 10px; }
+  .skill-group .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-size: 0.86rem; padding: 5px 11px; background: var(--paper-raise); border-radius: 3px; }
+  @media (max-width: 560px) { .skill-grid { grid-template-columns: 1fr; } }
+
+  /* ---- Education + certs ---- */
+  #edu .school { font-family: var(--font-display); font-weight: 600; font-size: 1.08rem; margin: 0 0 2px; }
+  #edu .deg { color: var(--ink-soft); margin: 0 0 4px; }
+  #edu .meta { font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-soft); margin: 0 0 12px; }
+  #edu .coursework { font-size: 0.95rem; color: var(--ink-soft); }
+
+  .cert-list { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 10px; }
+  .cert-list li { padding-left: 18px; position: relative; color: var(--ink-soft); font-size: 0.95rem; }
+  .cert-list li::before { content: "—"; position: absolute; left: 0; color: var(--pine); }
+
+  /* ---- Footer ---- */
+  footer { padding: 48px 0 70px; text-align: left; }
+  footer .cta { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; margin: 0 0 18px; max-width: 16ch; }
+  footer .links { font-family: var(--font-mono); font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 8px 22px; }
+  footer .links a { text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 2px; }
+  footer .fine { margin-top: 36px; font-size: 0.78rem; color: var(--ink-soft); font-family: var(--font-mono); }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="role">Data Science Engineering student — open to SDE internships</p>
+    <h1>Divya K</h1>
+    <p class="lede">I build full-stack systems and REST APIs, and connect them to ML and computer-vision pipelines — from a booking platform in production to an AI styling engine.</p>
+    <div class="links">
+      <a href="mailto:divya42317@gmail.com">divya42317@gmail.com</a>
+      <a href="tel:+919606818916">+91 96068 18916</a>
+      <a href="https://linkedin.com/in/divya-k-295426293" target="_blank" rel="noopener">linkedin.com/in/divya-k-295426293</a>
+      <a href="https://github.com/02-divya" target="_blank" rel="noopener">github.com/02-divya</a>
+      <span style="color:var(--ink-soft)">Karnataka, India</span>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <h2><span class="idx">01</span> About</h2>
+    <p><strong>Data Science Engineering student</strong> with hands-on experience across full-stack web development, REST APIs, and AI/ML system integration. Comfortable building modular software and working across SQL and MongoDB, with a habit of structured, methodical problem-solving.</p>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2><span class="idx">02</span> Experience</h2>
+
+    <div class="entry">
+      <div class="when">Aug 2026 —<br>Present</div>
+      <div>
+        <p class="org">Emertxe Information Technologies</p>
+        <p class="title">MERN Stack Web Development Intern · Remote</p>
+        <ul>
+          <li>Developing HomelyHub, a property booking web platform on MongoDB, Express.js, React.js, and Node.js.</li>
+          <li>Designing secure REST APIs to manage backend logic, dynamic data routes, and database connectivity.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">March 2026</div>
+      <div>
+        <p class="org">JPMorgan Chase &amp; Co.</p>
+        <p class="title">Software Engineering Simulation · Virtual Program</p>
+        <ul>
+          <li>Integrated Apache Kafka streaming pipelines into backend architectures to process real-time transaction data.</li>
+          <li>Practiced production-grade engineering standards and CI/CD workflows with relational database integrations.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2><span class="idx">03</span> Projects</h2>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>Glam AI — Smart Virtual Styling &amp; Recommender</h3>
+      </div>
+      <p class="stack">Python · Computer Vision · Generative AI</p>
+      <ul>
+        <li>Architected an AI-powered styling recommendation engine using facial geometry tracking and computer vision.</li>
+        <li>Built real-time e-commerce API pipelines that pull pricing data across major platforms to surface automated deals.</li>
+      </ul>
+      <p class="stack"><a href="https://github.com/02-divya/Glam-AI" target="_blank" rel="noopener">View repo →</a></p>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>Campus Care Management System</h3>
+      </div>
+      <p class="stack">Java · REST APIs · SQL</p>
+      <ul>
+        <li>Built a full-stack ticketing platform for campus reporting, with automated ticket-resolution logic served through RESTful APIs.</li>
+      </ul>
+      <p class="stack"><a href="https://github.com/02-divya/Campus-Care-Management" target="_blank" rel="noopener">View repo →</a></p>
+    </div>
+
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2><span class="idx">04</span> Skills</h2>
+    <div class="skill-grid">
+      <div class="skill-group">
+        <h4>Languages &amp; backend</h4>
+        <div class="tags">
+          <span class="tag">Java</span><span class="tag">Python</span><span class="tag">SQL</span>
+          <span class="tag">REST APIs</span><span class="tag">DSA</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Data &amp; AI</h4>
+        <div class="tags">
+          <span class="tag">Data Analytics</span><span class="tag">Generative AI</span>
+          <span class="tag">OpenCV</span><span class="tag">Pandas</span><span class="tag">NumPy</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Databases &amp; tools</h4>
+        <div class="tags">
+          <span class="tag">MongoDB</span><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">VS Code</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="edu">
+  <div class="wrap">
+    <h2><span class="idx">05</span> Education &amp; certifications</h2>
+    <p class="school">Vivekananda College of Engineering and Technology (VCET)</p>
+    <p class="deg">B.E. in Computer Science &amp; Data Science · CGPA 8.82 / 10</p>
+    <p class="meta">Puttur, Karnataka · Expected July 2027</p>
+    <p class="coursework">Coursework: Object-Oriented Programming, Database Management Systems (SQL), Machine Learning, Data Analytics.</p>
+
+    <ul class="cert-list">
+      <li>2nd Place, College Ideathon — ecoBin: IoT Smart Waste Analytics</li>
+      <li>McKinsey Forward Program</li>
+      <li>Google Gemini AI Fundamentals</li>
+      <li>IBM Python for Data Science</li>
+      <li>NPTEL — Data Science for Engineers</li>
+      <li>Co-Lead, MDC – E-Cell VCET: led student teams organizing technical workshops and hackathons</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="cta">Let's talk about an SDE internship.</p>
+    <div class="links">
+      <a href="mailto:divya42317@gmail.com">Email</a>
+      <a href="tel:+919606818916">Call</a>
+      <a href="https://linkedin.com/in/divya-k-295426293" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/02-divya" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <p class="fine">Divya K · Karnataka, India</p>
+  </div>
+</footer>
+
+</body>
+</html>
